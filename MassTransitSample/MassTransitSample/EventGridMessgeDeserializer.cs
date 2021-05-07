@@ -5,14 +5,13 @@ using MassTransit.Serialization;
 using Microsoft.Azure.EventGrid.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
 using System.Net.Mime;
 using System.Text;
 using System.Threading;
 
 namespace MassTransitSample
 {
+    // 扩展 IMessageDeserializer 实现 Azure Event 的反序列化器
     public class EventGridMessgeDeserializer : IMessageDeserializer
     {
         private string _contentType;
@@ -21,7 +20,14 @@ namespace MassTransitSample
         {
             _contentType = contentType;
         }
-        public ContentType ContentType => new ContentType(_contentType);
+
+        public ContentType ContentType
+        {
+            get
+            {
+                return new ContentType(_contentType);
+            }
+        }
 
         public ConsumeContext Deserialize(ReceiveContext receiveContext)
         {

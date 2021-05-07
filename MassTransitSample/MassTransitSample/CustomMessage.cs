@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace MassTransitSample
+﻿namespace MassTransitSample
 {
+    // message 定义
     public class CustomMessage
     {
         public string Hello { get; set; }
